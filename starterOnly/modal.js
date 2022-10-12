@@ -20,4 +20,18 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+/** close modal setting fade out animation and modalbg display none */
+const closeModal = () => {
+  const content = document.querySelector(".content");
+  const btn = document.querySelector(".close");
 
+  btn.addEventListener("click", () => {
+    content.classList.add("modal-close");
+    setTimeout(() => {
+      content.classList.remove("modal-close");
+      modalbg.style.display = "none";
+    }, 500);
+  });
+};
+
+closeModal();
