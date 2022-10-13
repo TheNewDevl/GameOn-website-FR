@@ -11,6 +11,9 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const closeModalBtn = document.querySelector(".close");
+const form = document.querySelector("form");
+const content = document.querySelector(".content");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -22,21 +25,12 @@ function launchModal() {
 
 /** close modal setting fade out animation and modalbg display none */
 const closeModal = () => {
-  const content = document.querySelector(".content");
-  const btn = document.querySelector(".close");
-
-  btn.addEventListener("click", () => {
-    content.classList.add("modal-close");
-    setTimeout(() => {
-      content.classList.remove("modal-close");
-      modalbg.style.display = "none";
-    }, 500);
-  });
+  content.classList.add("modal-close");
+  setTimeout(() => {
+    content.classList.remove("modal-close");
+    modalbg.style.display = "none";
+  }, 500);
 };
-
-closeModal();
-
-const form = document.querySelector("form");
 
 const validators = {
   /** @param input {HTMLInputElement}
@@ -68,7 +62,7 @@ const validators = {
   },
   location1(input) {
     const checkedLocation = document.querySelectorAll(
-      "[name=location]:first-child"
+      "[name=location]:checked"
     );
     return checkedLocation.length === 1;
   },
@@ -84,8 +78,9 @@ const inputErrors = {
   location1: "Vous devez choisir une option.",
 };
 
-/** Check all inputs validity */
-const checkFormValidity = (e) => {
+/** Check all inputs validity
+ * @return {boolean} false if one or more inputs are invalid */
+const checkFormValidity = () => {
   let formValidity = true;
 
   const inputs = document.querySelectorAll(
@@ -100,12 +95,6 @@ const checkFormValidity = (e) => {
       removeError(input);
     }
   });
-
-  if (!formValidity) {
-    e.preventDefault();
-  } else {
-    console.log("Il y a une erreur dans le formulaire");
-  }
   return formValidity;
 };
 
@@ -133,4 +122,35 @@ const removeError = (input) => {
   if (error) error.remove();
 };
 
-form.addEventListener("submit", checkFormValidity);
+const handleSubmit = (e) => {
+  const submitBtn = document.querySelector("[type=submit]");
+  e.preventDefault();
+
+  switch (submitBtn.value) {
+    case "C'est parti":
+      if (checkFormValidity()) {
+        document.querySelectorAll("input").forEach((i) => {
+          i.type === "text" && (i.value = "");
+          i.type === "number" && (i.value = "");
+          i.type === "email" && (i.value = "");
+          i.type === "date" && (i.value = "");
+          i.checked && (i.checked = false);
+        });
+        document.querySelector(".thks-msg").style.display = "block";
+        formData.forEach((f) => (f.style.display = "none"));
+        submitBtn.value = "Fermer";
+      }
+      break;
+    case "Fermer":
+      setTimeout(() => {
+        formData.forEach((f) => (f.style.display = "block"));
+        document.querySelector(".thks-msg").style.display = "none";
+      }, 1000);
+      closeModal();
+      submitBtn.value = "C'est parti";
+      break;
+  }
+};
+
+closeModalBtn.addEventListener("click", closeModal);
+form.addEventListener("submit", handleSubmit);

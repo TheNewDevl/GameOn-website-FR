@@ -158,7 +158,7 @@ main {
 }
 
 .bground {
-  display: block; /*TODO: set display none*/
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -552,4 +552,17 @@ footer {
   color: #FF4E60;
   padding: 0.5em 0 0 0;
 ;
+}
+
+.modal-body{
+  min-height: 850px;
+}
+.thks-msg{
+  display: none;
+  font-family: DM Sans;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 51px;
+  text-align: center;
+
 }
