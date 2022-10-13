@@ -36,10 +36,8 @@ export const handleSubmit = (e, modalbg, formData) => {
     case "C'est parti":
       if (checkFormValidity()) {
         document.querySelectorAll("input").forEach((i) => {
-          i.type === "text" && (i.value = "");
-          i.type === "number" && (i.value = "");
-          i.type === "email" && (i.value = "");
-          i.type === "date" && (i.value = "");
+          let types = ["text", "number", "email", "date"];
+          types.includes(i.type) && (i.value = "");
           i.checked && (i.checked = false);
         });
         document.querySelector(".thks-msg").style.display = "block";
