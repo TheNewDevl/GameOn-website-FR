@@ -1,6 +1,6 @@
 import { launchModal, closeModal } from "./utils/modal.mjs";
 import { editNav } from "./utils/domFuncs.mjs";
-import { handleSubmit } from "./handleForm.mjs";
+import { checkFormValidity, handleSubmit } from "./handleForm.mjs";
 
 // DOM Elements
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -9,6 +9,7 @@ const form = document.querySelector("form");
 const modalbg = document.querySelector(".bground");
 const formData = document.querySelectorAll(".formData");
 const responsiveIcon = document.querySelector(".icon");
+const changeInputs = document.querySelectorAll("input:not([type=radio])");
 
 // events
 responsiveIcon.addEventListener("click", editNav);
@@ -16,4 +17,11 @@ modalBtn.forEach((btn) =>
   btn.addEventListener("click", () => launchModal(modalbg))
 );
 closeModalBtn.addEventListener("click", () => closeModal(modalbg));
+changeInputs.forEach((input) => {
+  if (input.id !== "checkbox2") {
+    input.addEventListener("change", (e) => {
+      checkFormValidity([e.currentTarget]);
+    });
+  }
+});
 form.addEventListener("submit", (e) => handleSubmit(e, modalbg, formData));

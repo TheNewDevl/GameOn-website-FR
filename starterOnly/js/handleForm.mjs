@@ -4,12 +4,12 @@ import { closeModal } from "./utils/modal.mjs";
 
 /** Check all inputs validity
  * @return {boolean} false if one or more inputs are invalid */
-export const checkFormValidity = () => {
-  let formValidity = true;
-
-  const inputs = document.querySelectorAll(
+export const checkFormValidity = (
+  inputs = document.querySelectorAll(
     "#firstName,#lastName,#email,#birthdate,#quantity, #checkbox1, #location1"
-  );
+  )
+) => {
+  let formValidity = true;
 
   inputs.forEach((input) => {
     const validation = validator[input.id](input);
