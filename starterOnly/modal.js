@@ -39,6 +39,8 @@ closeModal();
 const form = document.querySelector("form");
 
 const validators = {
+  /** @param input {HTMLInputElement}
+   * @return boolean */
   firstName(input) {
     return /^([a-zA-Z'éèàçêï\+-][\s]{0,1}){2,30}$/.test(input.value);
   },
@@ -58,8 +60,28 @@ const validators = {
     return age >= 18;
   },
   quantity(input) {
-    return +input.value > 0 && +input.value < 100;
+    if (!input.value) return false;
+    return +input.value >= 0 && +input.value < 100;
   },
+  checkbox1(input) {
+    return input.checked;
+  },
+  location1(input) {
+    const checkedLocation = document.querySelectorAll(
+      "[name=location]:first-child"
+    );
+    return checkedLocation.length === 1;
+  },
+};
+
+const inputErrors = {
+  firstName: "Veuillez entrer 2 lettres ou plus pour le champ du prénom.",
+  lastName: "Veuillez entrer 2 lettres ou plus pour le champ du nom.",
+  email: "Veuillez saisir une adresse email valide.",
+  birthdate: "Vous devez entrer votre date de naissance et être majeur.",
+  quantity: "Vous devez saisir un chiffre compris entre 0 et 100.",
+  checkbox1: "Vous devez vérifier que vous acceptez les termes et conditions.",
+  location1: "Vous devez choisir une option.",
 };
 
 /** Check all inputs validity */
@@ -67,18 +89,17 @@ const checkFormValidity = (e) => {
   let formValidity = true;
 
   const inputs = document.querySelectorAll(
-    "#firstName,#lastName,#email,#birthdate,#quantity"
+    "#firstName,#lastName,#email,#birthdate,#quantity, #checkbox1, #location1"
   );
-  const requiredCheckbox = document.querySelector("#checkbox1");
-  const checkedLocation = document.querySelectorAll("[name=location]:checked");
 
   inputs.forEach((input) => {
     if (!validators[input.id](input)) {
+      createError(inputErrors[input.id], input);
       formValidity = false;
+    } else {
+      removeError(input);
     }
   });
-  if (!requiredCheckbox.checked) formValidity = false;
-  if (checkedLocation.length !== 1) formValidity = false;
 
   if (!formValidity) {
     e.preventDefault();
@@ -86,6 +107,30 @@ const checkFormValidity = (e) => {
     console.log("Il y a une erreur dans le formulaire");
   }
   return formValidity;
+};
+
+/**
+ * if no existing error, create a p element and append it to the closest form-data container
+ * @param {string} error
+ * @param {HTMLInputElement} input
+ * */
+const createError = (error, input) => {
+  const hasError = input.closest(".formData").querySelector(".input-error");
+  if (!hasError) {
+    const p = document.createElement("p");
+    p.className = "input-error";
+    p.textContent = error;
+    input.closest(".formData").appendChild(p);
+  }
+};
+
+/**
+ * if exists , remove the closest form-data error
+ * @param {HTMLInputElement} input
+ * */
+const removeError = (input) => {
+  const error = input.closest(".formData").querySelector(".input-error");
+  if (error) error.remove();
 };
 
 form.addEventListener("submit", checkFormValidity);
