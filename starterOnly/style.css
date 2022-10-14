@@ -16,8 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-default);
-  font-size: 18px;
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -29,7 +28,7 @@ p {
 img {
   padding-right: 1rem;
   min-width: 104px;
-  width: 100%;
+ /* width: 100%;*/
 }
 
 .topnav {
@@ -41,8 +40,13 @@ img {
   width: 277px;
   width: clamp(104px, 18vw + 1em ,277px);
   float: left;
+  display: flex;
+  align-items: center;
 }
+.header-logo img {
+  width: 100%;
 
+}
 .main-navbar {
     float: right;
 }
@@ -134,21 +138,33 @@ img {
 }
 
 
-
-
+/* MAIN */
 
 main {
-  font-size: 130%;
   font-weight: bolder;
   color: black;
-  padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+  padding: 0.5vw 100px;
   border-radius: 2rem;
   text-align: justify;
+  height: calc(100vh - 156px - 111px);
+min-height: 750px;
 
-
+}
+@media screen and (max-width: 1170px) {
+  main {
+    padding: 0.5vw 5vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0.5vw 30px;
+  }
+}
+@media screen and (max-width: 800px) {
+  main {
+    height: initial;
+    min-height: unset;
+  }
 }
 
 .modal-btn {
@@ -364,12 +380,13 @@ input[data-error]::after {
 }
 .btn-submit,
 .btn-signup {
+  width: max-content;
   background: #fe142f;
   display: block;
   margin: 0 auto;
   border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
+  font-size: 25px;
+  padding: 12px 30px;
   color: #fff;
   cursor: pointer;
   border: 0;
@@ -445,23 +462,31 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+
 .hero-section {
-  min-height: 93vh;
-  border-radius: 10px;
+  height: 100%;
+  max-height: 100%;
+  border-radius: 8px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);
   margin-bottom: 10px;
 }
+
 .hero-content {
-  padding: 51px 67px;
+  height: 100%;
+  max-height: 100%;
+  padding: 51px 56px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
 }
 .hero-content::after {
   content: "";
@@ -478,38 +503,39 @@ input[data-error]::after {
 }
 .hero-headline {
   font-size: 6rem;
-  font-weight: normal;
+  font-size: clamp(37px, 6vw + 0.5em, 96px);
+  font-weight: 500;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 153%;
   font-weight: normal;
-  margin-top: 57px;
   padding: 0;
+  font-size: 24px;
 }
 .btn-signup {
   outline: none;
   text-transform: capitalize;
   font-size: 1.3rem;
-  padding: 15px 23px;
+  padding: 15px 30px;
   margin: 0;
-  margin-top: 59px;
 }
 .hero-img {
   grid-column: span 8;
+  width: 100%;
+  height: 100%;
 }
 .hero-img img {
   width: 100%;
   height: 100%;
-  display: block;
   padding: 0;
+  object-fit: cover;;
 }
 .copyrights {
   color: #fe142f;
   padding: 0;
-  font-size: 1rem;
+  font-size: 15px;
   margin: 60px 0 30px;
-  font-weight: bolder;
 }
 .hero-section > .btn-signup {
   display: none;
@@ -528,7 +554,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
+    display: block;
   }
   .hero-content::after {
     content: unset;
@@ -537,12 +564,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    margin-top: 20px;
+
   }
   .hero-img img {
     border-radius: 10px;
@@ -551,13 +578,37 @@ footer {
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
-    padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
   }
 }
+@media screen and (max-width: 1170px) {
+  .hero-text {
+    font-size: 18px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .hero-text {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .hero-text {
+    font-size: 13px;
+  }
+  .btn-signup{
+    padding: 7px 30px;
+    font-size: 14px;
+  }
+  .copyrights {
+    font-size: 10px;
+  }
+}
+
 
 @keyframes modalopen {
   from {
