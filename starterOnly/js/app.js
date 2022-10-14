@@ -26,6 +26,6 @@ changeInputs.forEach((input) => {
 });
 form.addEventListener("submit", (e) => handleSubmit(e, modalbg, formData));
 
-//click outside of the modal with close the modal
-modalbg.addEventListener("click", () => closeModal(modalBody));
+//click outside the modal with close the modal
+modalbg.addEventListener("click", () => closeModal(modalbg));
 modalBody.addEventListener("click", (e) => e.stopPropagation());
