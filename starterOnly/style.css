@@ -28,7 +28,6 @@ p {
 img {
   padding-right: 1rem;
   min-width: 104px;
- /* width: 100%;*/
 }
 
 .topnav {
@@ -40,8 +39,6 @@ img {
   width: 277px;
   width: clamp(104px, 18vw + 1em ,277px);
   float: left;
-  display: flex;
-  align-items: center;
 }
 .header-logo img {
   width: 100%;
@@ -106,6 +103,7 @@ img {
   .topnav{
     display: flex;
     position: relative;
+    padding-bottom: 25px;
   }
   .header-logo{
     margin: 0;
@@ -137,7 +135,6 @@ img {
   }
 }
 
-
 /* MAIN */
 
 main {
@@ -145,11 +142,10 @@ main {
   color: black;
   padding: 0.5vw 100px;
   border-radius: 2rem;
-  text-align: justify;
   height: calc(100vh - 156px - 111px);
-min-height: 750px;
-
+  min-height: 750px;
 }
+
 @media screen and (max-width: 1170px) {
   main {
     padding: 0.5vw 5vw;
@@ -172,7 +168,6 @@ min-height: 750px;
   background: #fe142f;
   display: flex;
   margin: auto;
-  padding: 2em;
   color: #fff;
   padding: 0.75rem 2.5rem;
   border-radius: 1rem;
@@ -224,7 +219,7 @@ min-height: 750px;
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 536px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -245,26 +240,28 @@ min-height: 750px;
   margin: 15px auto;
 }
 
-label {
+label, .text-label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 17px;
+  padding: 0;
 }
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
+  margin-bottom: 10px;
 }
 .text-control {
-  margin: 0;
   padding: 8px;
   width: 100%;
   border-radius: 8px;
   font-size: 20px;
-  height: 48px;
+  height: 64px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -292,9 +289,10 @@ input[data-error]::after {
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
+  margin-left: 30px;
   font-size: 12px;
   font-weight: normal;
+  margin-right: 10px;
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
@@ -306,7 +304,7 @@ input[data-error]::after {
   text-indent: 29px;
   white-space: nowrap;
   position: absolute;
-  left: -30px;
+  left: -27px;
   top: -1px;
   transition: 0.3s;
 }
@@ -391,10 +389,58 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+@media screen and (max-width: 500px) {
+  .hero-text {
+    font-size: 18px;
+  }
+  .text-label{
+    margin-bottom: 5px;
+  }
+  .text-control{
+    height: 50px;
+  }
+  label{
+    margin-bottom: 6px;
+  }
+  .modal-body {
+    padding: 5px 30px;
+    margin: 15px auto;
+  }
+  input{
+    margin-bottom: 5px;
+  }
+  .checkbox-label,
+  .checkbox2-label {
+    margin-left: 30px;
+    font-size: 12px;
+    margin-right: 3px;
+  }
+  .formData:nth-child(7){
+    margin-top: 10px;
+  }
+  .btn-submit{
+    font-size: 14px;
+    padding: 6px 35px;
+    margin-top: 10px;
+  }
+  .main{
+    opacity: 0;
+  }
+  .bground{
+    background: transparent;
+  }
+  .content{
+    margin-top: 0;
+    height: calc(100vh - 82px);
+    max-height: 700px;
+    top: 82px;
+
+  }
+}
 /* custom select styles */
 .custom-select {
   position: relative;
-  font-family: Arial;
   font-size: 1.1rem;
   font-weight: normal;
 }
@@ -432,7 +478,7 @@ input[data-error]::after {
   color: #000;
   padding: 11px 16px;
   border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
   border-radius: 8px;
   height: 48px;
@@ -460,9 +506,12 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
+  width: 100% ;
 }
-
+.formData .btn-signup{
+  font-size: 14px;
+}
 .hero-section {
   height: 100%;
   max-height: 100%;
@@ -503,7 +552,7 @@ input[data-error]::after {
 }
 .hero-headline {
   font-size: 6rem;
-  font-size: clamp(37px, 6vw + 0.5em, 96px);
+  font-size: clamp(39px, 6vw + 0.5em, 96px);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -638,19 +687,18 @@ footer {
   font-weight: 400;
   line-height: 14px;
   color: #FF4E60;
-  padding: 0.5em 0 0 0;
-;
+  margin-top: -8px;
+  padding: 5px 0 0 0;
 }
 
-.modal-body{
-  min-height: 850px;
-}
 .thks-msg{
+  height: 86%;
+  width: fit-content;
   display: none;
-  font-family: DM Sans;
   font-size: 36px;
   font-weight: 400;
   line-height: 51px;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-
 }

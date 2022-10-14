@@ -40,7 +40,7 @@ export const handleSubmit = (e, modalbg, formData) => {
           types.includes(i.type) && (i.value = "");
           i.checked && (i.checked = false);
         });
-        document.querySelector(".thks-msg").style.display = "block";
+        document.querySelector(".thks-msg").style.display = "flex";
         formData.forEach((f) => (f.style.display = "none"));
         submitBtn.value = "Fermer";
       }
