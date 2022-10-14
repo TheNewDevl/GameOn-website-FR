@@ -19,6 +19,7 @@ export const createError = (error, input) => {
     p.className = "input-error";
     p.textContent = error;
     input.closest(".formData").appendChild(p);
+    input.style.border = "2px solid red";
   }
 };
 
@@ -28,5 +29,8 @@ export const createError = (error, input) => {
  * */
 export const removeError = (input) => {
   const error = input.closest(".formData").querySelector(".input-error");
-  if (error) error.remove();
+  if (error) {
+    input.style.border = "";
+    error.remove();
+  }
 };
