@@ -34,7 +34,7 @@ export const handleSubmit = (e, modalbg, formData) => {
 
   switch (submitBtn.value) {
     case "C'est parti":
-      if (!checkFormValidity()) {
+      if (checkFormValidity()) {
         document.querySelectorAll("input").forEach((i) => {
           let types = ["text", "number", "email", "date"];
           types.includes(i.type) && (i.value = "");
