@@ -48,6 +48,7 @@ img {
     float: right;
 }
 .topnav a {
+  background: #fff;
   float: left;
   display: block;
   color: #232323;
@@ -647,6 +648,9 @@ footer {
   }
 }
 @media screen and (max-width: 500px) {
+  .topnav{
+    z-index: 1000;
+  }
   .bground{
     align-items: unset;
     justify-content: unset;
