@@ -2,7 +2,7 @@
  * @param modalbg {HTMLDivElement} modal container
  * launch modal form */
 export function launchModal(modalbg) {
-  modalbg.style.display = "block";
+  modalbg.style.display = "flex";
 }
 
 /**

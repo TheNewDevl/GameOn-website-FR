@@ -214,10 +214,11 @@ main {
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
-  margin: 5% auto;
   width: 100%;
   max-width: 536px;
   animation-name: modalopen;
@@ -431,11 +432,11 @@ input[data-error]::after {
     background: transparent;
   }
   .content{
+    min-height: unset;
     margin-top: 0;
     height: calc(100vh - 82px);
-    max-height: 700px;
+    max-height: 800px;
     top: 82px;
-
   }
 }
 /* custom select styles */
@@ -646,6 +647,10 @@ footer {
   }
 }
 @media screen and (max-width: 500px) {
+  .bground{
+    align-items: unset;
+    justify-content: unset;
+  }
   .hero-text {
     font-size: 13px;
   }
@@ -692,8 +697,9 @@ footer {
 }
 
 .thks-msg{
+  min-height: 500px;
   height: 86%;
-  width: fit-content;
+  width: 100%;
   display: none;
   font-size: 36px;
   font-weight: 400;
