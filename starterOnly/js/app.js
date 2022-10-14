@@ -10,7 +10,7 @@ const modalbg = document.querySelector(".bground");
 const formData = document.querySelectorAll(".formData");
 const responsiveIcon = document.querySelector(".icon");
 const changeInputs = document.querySelectorAll("input:not([type=radio])");
-
+const modalBody = document.querySelector(".modal-body");
 // events
 responsiveIcon.addEventListener("click", editNav);
 modalBtn.forEach((btn) =>
@@ -25,3 +25,7 @@ changeInputs.forEach((input) => {
   }
 });
 form.addEventListener("submit", (e) => handleSubmit(e, modalbg, formData));
+
+//click outside of the modal with close the modal
+modalbg.addEventListener("click", () => closeModal(modalBody));
+modalBody.addEventListener("click", (e) => e.stopPropagation());
