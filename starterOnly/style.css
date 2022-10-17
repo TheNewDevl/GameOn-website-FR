@@ -114,9 +114,9 @@ img {
     position: relative;
   }
   .main-navbar a:first-child{
-    margin-top: 30px;
+    margin-top: 34px;
   }
-  .topnav a {display: none; margin: 5px}
+  .topnav a {display: none; margin: 5px 0 5px 5px;}
   .topnav a.icon {
     float: right;
     display: block;
@@ -209,10 +209,7 @@ main {
   display: none;
   position: fixed;
   z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
+  inset: 0;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
   justify-content: center;
@@ -226,10 +223,15 @@ main {
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
-  overflow: hidden;
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+@media screen and (max-height: 860px) {
+  .bground{
+    align-items: start;
+  }
 }
 
 .modal-close {
@@ -433,11 +435,7 @@ input[data-error]::after {
     background: transparent;
   }
   .content{
-    min-height: unset;
-    margin-top: 0;
-    height: calc(100vh - 82px);
-    max-height: 800px;
-    top: 82px;
+    margin-top: 82px;
   }
 }
 /* custom select styles */
@@ -648,11 +646,8 @@ footer {
   }
 }
 @media screen and (max-width: 500px) {
-  .topnav{
-    z-index: 1000;
-  }
   .bground{
-    align-items: unset;
+    align-items: start;
     justify-content: unset;
   }
   .hero-text {
