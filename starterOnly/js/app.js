@@ -11,12 +11,20 @@ const formData = document.querySelectorAll(".formData");
 const responsiveIcon = document.querySelector(".icon");
 const changeInputs = document.querySelectorAll("input:not([type=radio])");
 const modalBody = document.querySelector(".modal-body");
-// events
+
+//input age minimum age
+export const minAge = 12;
+
+// edit nav event
 responsiveIcon.addEventListener("click", editNav);
+
+//open and close modal event
 modalBtn.forEach((btn) =>
   btn.addEventListener("click", () => launchModal(modalbg))
 );
 closeModalBtn.addEventListener("click", () => closeModal(modalbg));
+
+//add inputs change event to check validity
 changeInputs.forEach((input) => {
   if (input.id !== "checkbox2") {
     input.addEventListener("change", (e) => {
@@ -24,8 +32,9 @@ changeInputs.forEach((input) => {
     });
   }
 });
+//submit form event
 form.addEventListener("submit", (e) => handleSubmit(e, modalbg, formData));
 
-//click outside the modal with close the modal
+//click outside the modal will close the modal
 modalbg.addEventListener("click", () => closeModal(modalbg));
 modalBody.addEventListener("click", (e) => e.stopPropagation());

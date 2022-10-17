@@ -35,17 +35,20 @@ export const handleSubmit = (e, modalbg, formData) => {
   switch (submitBtn.value) {
     case "C'est parti":
       if (checkFormValidity()) {
+        let types = ["text", "number", "email", "date"];
+        //reset input values
         document.querySelectorAll("input").forEach((i) => {
-          let types = ["text", "number", "email", "date"];
           types.includes(i.type) && (i.value = "");
           i.checked && (i.checked = false);
         });
-        document.querySelector(".thks-msg").style.display = "flex";
+        //hide inputs and display thanks message
         formData.forEach((f) => (f.style.display = "none"));
+        document.querySelector(".thks-msg").style.display = "flex";
         submitBtn.value = "Fermer";
       }
       break;
     case "Fermer":
+      //hide thanks message and display inputs again
       setTimeout(() => {
         formData.forEach((f) => (f.style.display = "block"));
         document.querySelector(".thks-msg").style.display = "none";

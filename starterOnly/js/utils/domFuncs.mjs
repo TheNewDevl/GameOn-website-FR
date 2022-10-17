@@ -1,3 +1,4 @@
+/** handle the navigation classname */
 export function editNav() {
   const x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
