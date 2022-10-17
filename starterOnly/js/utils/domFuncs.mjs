@@ -14,12 +14,13 @@ export function editNav() {
  * @param {HTMLInputElement} input
  * */
 export const createError = (error, input) => {
-  const hasError = input.closest(".formData").querySelector(".input-error");
+  const closestFormData = input.closest(".formData");
+  const hasError = closestFormData.querySelector(".input-error");
   if (!hasError) {
     const p = document.createElement("p");
     p.className = "input-error";
     p.textContent = error;
-    input.closest(".formData").appendChild(p);
+    closestFormData.appendChild(p);
     input.style.border = "2px solid red";
   }
 };
