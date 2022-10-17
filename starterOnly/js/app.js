@@ -10,7 +10,7 @@ const modalbg = document.querySelector(".bground");
 const formData = document.querySelectorAll(".formData");
 const responsiveIcon = document.querySelector(".icon");
 const changeInputs = document.querySelectorAll("input:not([type=radio])");
-const modalBody = document.querySelector(".modal-body");
+const modalContent = document.querySelector(".content");
 
 //input age minimum age
 export const minAge = 12;
@@ -37,4 +37,4 @@ form.addEventListener("submit", (e) => handleSubmit(e, modalbg, formData));
 
 //click outside the modal will close the modal
 modalbg.addEventListener("click", () => closeModal(modalbg));
-modalBody.addEventListener("click", (e) => e.stopPropagation());
+modalContent.addEventListener("click", (e) => e.stopPropagation());
