@@ -12,10 +12,10 @@
 ### The challenge
 Part of DA - React OC course
 
-starterOnly directory contain starter code
-
-prodReady directory contains the reorganized HTML & CSS code, corrected following Figma templates,
+main branch contains the reorganized HTML & CSS code, corrected following Figma templates,
 fixed issues and the JS code making the elements interactive.
+
+Go to initial_codebase to check original code base
 
 ### Links
 - [Source Code](https://github.com/TheNewDevl/GameOn-website-FR)
